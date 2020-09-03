@@ -39,7 +39,6 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :comments
 - has_many :products
 - has_many :orders
 
@@ -47,7 +46,7 @@ Things you may want to cover:
 
 | Column       | Type   | Options     |
 | ------------ | ------ | ----------- |
-| user_id      | integer| null: false |
+| user         | references| null: false, foreign_key: true |
 | name         | string | null: false |
 | content      | text   | null: false |
 | price        | integer| null: false |
@@ -61,28 +60,14 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_many :comments
 - has_one :order
- 
-## comments テーブル
-
-| Column       | Type   | Options     |
-| ------------ | ------ | ----------- |
-| text         | text   | null: false |
-| user_id      | integer| null: false |
-| product_id   | integer| null: false |
-
-### Association
-
-- belongs_to :user
-- belongs_to :product
 
 ## orders テーブル
 
 | Column          | Type   | Options     |
 | ------------    | ------ | ----------- |
-| user_id         | integer| null: false |
-| product_id      | integer| null: false |
+| user            | references| null: false, foreign_key: true |
+| product         | references| null: false, foreign_key: true |
 
 ### Association
 
@@ -100,7 +85,7 @@ Things you may want to cover:
 | address         | string | null: false |
 | building        | string |             |
 | phone_number    | integer| null: false |
-| order_id        | integer| null: false |
+| order           | references| null: false, foreign_key: true |
 
 ### Association
 
