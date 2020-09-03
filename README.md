@@ -32,32 +32,36 @@ Things you may want to cover:
 | name     | string | null: false |
 | email    | string | null: false |
 | password | string | null: false |
+| last_name| string | null: false |
+| last_name_kana| string | null: false |
+| first_name_kana| string | null: false |
 
 ### Association
 
 - has_many :comments
 - has_many :products
-- has_many :shipping_addresses
+- has_many :orders
 
 ## products テーブル
 
 | Column       | Type   | Options     |
 | ------------ | ------ | ----------- |
+| user_id      | integer| null: false |
 | product_name | string | null: false |
 | content      | text   | null: false |
-| category     | string | null: false |
-| state        | string | null: false |
-| delivery_fee | string | null: false |
-| area         | string | null: false |
-| delivery_day | string | null: false |
 | price        | integer| null: false |
-| user_id      | integer| null: false |
+| category_id  | integer| null: false |
+| state_id     | integer| null: false |
+| delivery_fee_id | integer| null: false |
+| area_id      | integer| null: false |
+| delivery_day_id | integer| null: false |
+
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
-- has_one :shipping_address
+- has_one :order
  
 ## comments テーブル
 
@@ -72,20 +76,32 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :product
 
-## shipping_addresses テーブル
+## orders テーブル
 
 | Column          | Type   | Options     |
 | ------------    | ------ | ----------- |
-| postal_code     | string | null: false |
-| prefecture      | string | null: false |
-| municipalitie   | stinrg | null: false |
-| address         | string | null: false |
-| building        | string |             |
-| phone_number    | integer| null: false |
+| price           | integer| null: false |
+| user_id         | integer| null: false |
 | product_id      | integer| null: false |
-| purchase_user_id| integer| null: false |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :product
+- has_one :address
+
+## addresses テーブル
+
+| Column          | Type   | Options     |
+| ------------    | ------ | ----------- |
+| postal_code     | string | null: false |
+| prefecture_id   | integer| null: false |
+| municipalitie   | stinrg | null: false |
+| address         | string | null: false |
+| building        | string |             |
+| phone_number    | integer| null: false |
+| order_id        | integer| null: false |
+
+### Association
+
+- belongs_to :order
