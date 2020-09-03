@@ -36,6 +36,9 @@ Things you may want to cover:
 | first_name| string | null: false |
 | last_name_kana| string | null: false |
 | first_name_kana| string | null: false |
+| birthyear_id| integer | null: false |
+| birthmonth_id| integer | null: false |
+| birthday_id| integer | null: false |
 
 ### Association
 
