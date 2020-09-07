@@ -13,6 +13,7 @@ class Product < ApplicationRecord
     validates :delivery_fee_id
     validates :area_id
     validates :delivery_day_id
+    validates :image
   end
   with_options numericality: { other_than: 1} do
   validates :category_id
