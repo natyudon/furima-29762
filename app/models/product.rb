@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates :name, :content, :category,:state, :delivery_fee,:area, :delivery_day, :image, presence: true
-  validates :category_id,:state_id,:delivery_fee_id,:area_id,:delivery_day_id, numericality: { other_than: 1, message: "Select"}
-  validates :price,presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  validates :name, :content, :category, :state, :delivery_fee, :area, :delivery_day, :image, presence: true
+  validates :category_id, :state_id, :delivery_fee_id, :area_id, :delivery_day_id, numericality: { other_than: 1, message: 'Select'}
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}
 end
