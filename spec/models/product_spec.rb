@@ -70,5 +70,30 @@ RSpec.describe Product, type: :model do
       @product.valid?
       expect(@product.errors.full_messages).to include('Price is not a number')
     end
+    it 'category_idの値が1の時、登録できないこと' do
+      @product.category_id = 1
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Category Select")
+    end
+    it 'state_idの値が1の時、登録できないこと' do
+      @product.state_id = 1
+      @product.valid?
+      expect(@product.errors.full_messages).to include("State Select")
+    end
+    it 'delivery_fee_idの値が1の時、登録できないこと' do
+      @product.delivery_fee_id = 1
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Delivery fee Select")
+    end
+    it 'area_idの値が1の時、登録できないこと' do
+      @product.area_id = 1
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Area Select")
+    end
+    it 'delivery_day_idの値が1の時、登録できないこと' do
+      @product.delivery_day_id = 1
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Delivery day Select")
+    end
   end
 end
