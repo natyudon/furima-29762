@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :params_id, only: [:show, :edit, :update]
+  before_action :params_id, only: [:show, :edit, :update,:destroy]
 
   def index
     @product = Product.all.order('created_at DESC')
@@ -29,8 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    product = Product.find(params[:id])
-    product.destroy
+    @product.destroy
     redirect_to root_path
   end
 
