@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :params_id, only: [:show, :edit, :update]
+  before_action :params_id, only: [:show, :edit, :update, :destroy]
 
   def index
     @product = Product.all.order('created_at DESC')
@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
       render :new
     end
   end
+
   # show/editアクションはbefore_actionで呼び出している処理のみのため、アクションを定義していない
   # railsはroutes.rbに定義してあるパス・メソッドに対応する、viewファイルがあれば、controllerに書く必要がないため
   def update
@@ -24,6 +25,14 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @product.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
