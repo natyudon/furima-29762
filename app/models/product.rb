@@ -11,6 +11,8 @@ class Product < ApplicationRecord
   belongs_to_active_hash :delivery_day
   belongs_to :user
   has_one_attached :image
+  has_one :order
+
 
   validates :name, :content, :category, :state, :delivery_fee, :area, :delivery_day, :image, presence: true
   validates :category_id, :state_id, :delivery_fee_id, :area_id, :delivery_day_id, numericality: { other_than: 1, message: 'Select'}
