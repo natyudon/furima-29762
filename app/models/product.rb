@@ -13,7 +13,6 @@ class Product < ApplicationRecord
   has_one_attached :image
   has_one :order
 
-
   validates :name, :content, :category, :state, :delivery_fee, :area, :delivery_day, :image, presence: true
   validates :category_id, :state_id, :delivery_fee_id, :area_id, :delivery_day_id, numericality: { other_than: 1, message: 'Select'}
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}
