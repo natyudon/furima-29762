@@ -1,7 +1,7 @@
 document.addEventListener('turbolinks:load', function() {
   const paystop = document.getElementById("charge-form");
   if (paystop == null){
-    return null
+    return 
   }
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("charge-form");
@@ -10,6 +10,7 @@ document.addEventListener('turbolinks:load', function() {
 
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
+    console.log(formData.get("exp_month"));
     const card = {
       number: formData.get("number"),
       cvc: formData.get("cvc"),
