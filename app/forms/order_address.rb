@@ -15,7 +15,7 @@ class OrderAddress
   validates :prefecture_id, numericality: { other_than: 1, message: 'Select'}
 
   def save
-    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, municipalitie: municipalitie, address: address, building: building, phone_number: phone_number)
-    Order.create(user_id: user_id, product_id: product_id)
+    order = Order.create(user_id: user_id, product_id: product_id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, municipalitie: municipalitie, address: address, building: building, phone_number: phone_number,order_id: order.id)
   end
 end
