@@ -1,7 +1,7 @@
 class OrderAddress
 
   include ActiveModel::Model
-  attr_accessor :product_id, :postal_code, :prefecture_id, :municipalitie, :address, :building, :phone_number
+  attr_accessor :user_id,:product_id, :postal_code, :prefecture_id, :municipalitie, :address, :building, :phone_number
 
   NUMBER_GOSIC = /\A[0-9０−９]+\z/.freeze
   POSTAL_VALIDATE = /\A[0-9]{3}-[0-9]{4}\z/.freeze
@@ -16,6 +16,6 @@ class OrderAddress
 
   def save
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, municipalitie: municipalitie, address: address, building: building, phone_number: phone_number)
-    Order.create(user_id: current_user.id, product_id: product_id)
+    Order.create(user_id: user_id, product_id: product_id)
   end
 end
