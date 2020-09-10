@@ -3,4 +3,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @product = Product.find(params[:product_id])
   end
+  def create
+    
+  end
 end
