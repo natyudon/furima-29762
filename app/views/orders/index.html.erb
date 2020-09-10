@@ -7,7 +7,7 @@
     </h1>
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>
-      <%= image_tag "item-sample.png", class: 'buy-item-img' %>
+      <%= image_tag @product.image, class: 'buy-item-img' %>
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
           <%= @product.name %>
@@ -30,8 +30,8 @@
       </p>
     </div>
     <%# /支払額の表示 %>
-
-    <%= form_with model: [@product, @order],id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%# render 'shared/error_messages', model: f.object %>
+    <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
@@ -89,7 +89,7 @@
           <label class="form-text">都道府県</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:prefecture_id, [], :hoge, :hoge, {}, {class:"select-box", id:"prefecture"}) %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {selected: @order_address.prefecture_id}, {class:"select-box", id:"prefecture"}) %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
