@@ -18,9 +18,10 @@ class ProductsController < ApplicationController
       render :new
     end
   end
+
   def show
-    
   end
+
   # show/editアクションはbefore_actionで呼び出している処理のみのため、アクションを定義していない
   # railsはroutes.rbに定義してあるパス・メソッドに対応する、viewファイルがあれば、controllerに書く必要がないため
   def update

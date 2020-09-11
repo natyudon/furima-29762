@@ -10,3 +10,4 @@ function addToNewUrl() {
   history.replaceState('', '', `${ path }/new`)
 }
 window.addEventListener("load", addToNewUrl);
+//このファイルは不要だが今後もしrenderでビューを返してリロードするとエラーになるのを解消したい時に役に立つと思って残す
