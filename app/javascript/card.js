@@ -10,7 +10,6 @@ document.addEventListener('turbolinks:load', function() {
 
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
-    console.log(formData.get("exp_month"));
     const card = {
       number: formData.get("number"),
       cvc: formData.get("cvc"),
