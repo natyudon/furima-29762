@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all.order('created_at DESC')
+    @order = Order.all
   end
 
   def new
@@ -16,6 +17,9 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
   end
 
   # show/editアクションはbefore_actionで呼び出している処理のみのため、アクションを定義していない
