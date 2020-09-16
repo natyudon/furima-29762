@@ -46,6 +46,14 @@
   margin-bottom: 10px;
 }
 
+#image-data {
+  margin-top: 5px;
+}
+#image-data img{
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
 .select-box {
   height: 30px;
   width: 100%;
