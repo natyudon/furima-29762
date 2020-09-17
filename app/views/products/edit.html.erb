@@ -7,21 +7,47 @@ app/assets/stylesheets/items/new.css %>
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @product,local: true do |f| %>
+    <%= form_with model: @product,id: 'form-item',local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
-    <div class="img-upload">
+    <div class="img-upload" id="upload-image-file">
       <div class="weight-bold-text">
         出品画像
         <span class="indispensable">必須</span>
+        <div id="image-data">
+          <%= image_tag @product.images[0] %>
+        </div>
       </div>
       <div class="click-upload">
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <label for="item-image">ファイルを選択</label>
+        <%= f.file_field :images ,id:"item-image",class: "item-image-none", multiple: true %>
+      </div>
+    </div>
+    <div id="add-image-content">
+      <div id="left-side">
+        <%if @product.images[1]%>
+        <%=image_tag @product.images[1],id: "left-side-image"%>
+        <% end %>
+      </div>
+      <div id="right-side" class="right">
+      <label for="add-input">ファイルを選択</label>
+      <%=f.file_field :images ,id: "add-input", class: "item-image-none", multiple: true %>
+      </div>
+    </div>
+    <div id="add-image-content2">
+      <div id="left-side2">
+      <%if @product.images[2]%>
+       <%=image_tag @product.images[2], id: "left-side-image2"%>
+       <%end %>
+      </div>
+      <div id="right-side2" class="right">
+      <label for="add-input2">ファイルを選択</label>
+      <%=f.file_field :images ,id: "add-input2", class: "item-image-none", multiple: true%>
       </div>
     </div>
     <%# /出品画像 %>

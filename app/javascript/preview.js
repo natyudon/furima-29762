@@ -1,4 +1,5 @@
 document.addEventListener('turbolinks:load', function(){
+
     const itemImage = document.getElementById('item-image');
     if (itemImage == null){
       return null
@@ -21,7 +22,7 @@ document.addEventListener('turbolinks:load', function(){
       if (alreadyContent == null){
       const addImageContent = document.createElement('div');
       addImageContent.setAttribute('id', 'add-image-content');
-      addImageContent.insertAdjacentHTML('afterbegin', '<div id="left-side"></div><div id="right-side"><input type="file" id="add-input" name="product[images][]"></div>')
+      addImageContent.insertAdjacentHTML('afterbegin', '<div id="left-side"></div><div id="right-side" class="right"><label for="add-input">ファイルを選択</label><input type="file" id="add-input" class="item-image-none" name="product[images][]"></div>')
 
       const imageUpload = document.getElementById('upload-image-file');
       const formItem = document.getElementById('form-item');
@@ -43,7 +44,7 @@ document.addEventListener('turbolinks:load', function(){
       if(alreadyContent == null ){
       const addImageContent2 = document.createElement('div');
       addImageContent2.setAttribute('id', 'add-image-content2');
-      addImageContent2.insertAdjacentHTML('afterbegin', '<div id="left-side2"></div><div id="right-side2"><input type="file" id="add-input2" name="product[images][]"></div>')
+      addImageContent2.insertAdjacentHTML('afterbegin', '<div id="left-side2"></div><div id="right-side2" class="right"><label for="add-input2">ファイルを選択</label><input type="file" id="add-input2" class="item-image-none" name="product[images][]"></div>')
       const addImageContent = document.getElementById('add-image-content');
       const formItem = document.getElementById('form-item');
       formItem.insertBefore(addImageContent2, addImageContent.nextSibling);
@@ -105,5 +106,40 @@ document.addEventListener('turbolinks:load', function(){
       }
 
     });
-      
+
+    // edit.html.erbで初めから'add-input'、'addーinput2'が存在しているときの処理
+    const reloadAddInput = document.getElementById('add-input');
+    if (reloadAddInput){
+      reloadAddInput.addEventListener('change', function (e) {
+        const releftSideImage = document.getElementById('left-side-image');
+        if (releftSideImage) {
+          releftSideImage.remove();
+        }
+
+        const refile2 = e.target.files[0];
+        if (refile2){
+         const reblob2 = window.URL.createObjectURL(refile2);
+
+         createImageHTML2(reblob2);
+        }
+      });
+    }
+
+
+    const reloadAddInput2 = document.getElementById('add-input2');
+    if (reloadAddInput2){
+      reloadAddInput2.addEventListener('change', function (e) {
+        const releftSideImage2 = document.getElementById('left-side-image2');
+        if (releftSideImage2) {
+          releftSideImage2.remove();
+        }
+
+        const refile3 = e.target.files[0];
+        if (refile3){
+         const reblob3 = window.URL.createObjectURL(refile3);
+
+         createImageHTML3(reblob3);
+        }
+      });
+    }
 });

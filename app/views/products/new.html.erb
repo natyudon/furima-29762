@@ -20,7 +20,8 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :images, id:"item-image" , multiple: true %>
+        <label for="item-image">ファイルを選択</label>
+        <%= f.file_field :images, id:"item-image" ,class: "item-image-none", multiple: true %>
       </div>
     </div>
     <%# /出品画像 %>

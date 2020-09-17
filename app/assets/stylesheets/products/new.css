@@ -23,6 +23,18 @@
   padding: 10vh 15vw;
 }
 
+.items-sell-main label {
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  padding: 5px 3px;
+  cursor: pointer;
+}
+
+.items-sell-main label:hover {
+  background-color: #ccc;
+}
+
 .items-sell-title {
   font-size: 22px;
   font-weight: bold;
@@ -96,6 +108,17 @@
   min-width: 250px;
 }
 
+.click-upload label{
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  padding: 5px 3px;
+  cursor: pointer;
+}
+
+.item-image-none{
+  display: none;
+}
 .click-upload>p {
   margin-bottom: 15px;
 }
@@ -137,6 +160,11 @@
   width: 220px;
   height: 220px;
   object-fit: contain;
+}
+
+.right {
+  min-width: 250px;
+  padding-top: 60px;
 }
 
 #add-input2 {
