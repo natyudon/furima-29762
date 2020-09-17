@@ -130,7 +130,10 @@
           <li class='list'>
             <%= link_to product_path(product) do %>
             <div class='item-img-content'>
-              <%= image_tag product.image, class: "item-img" %>
+              <% product.images.each_with_index do |image, i|%>
+                <% break if i >= 1%>
+                <%= image_tag image, class: "item-img" %>
+              <% end %>
               <% @order.each do |order|%>
               <% if order.product_id == product.id%>
               <div class='sold-out'>

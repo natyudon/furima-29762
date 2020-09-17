@@ -5,21 +5,22 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @product, url: products_path,local: true do |f| %>
+    <%= form_with model: @product, url: products_path, id: 'form-item',local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
-    <div class="img-upload">
+    <div class="img-upload" id="upload-image-file">
       <div class="weight-bold-text">
         出品画像
-        <span class="indispensable">必須</span>
+        <span class="indispensable">※最低１枚必須</span>
+        <p>３枚まで選択可能</p>
       </div>
       <div class="click-upload">
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <%= f.file_field :images, id:"item-image" , multiple: true %>
       </div>
     </div>
     <%# /出品画像 %>

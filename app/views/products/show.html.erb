@@ -7,7 +7,7 @@
       <%= @product.name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag @product.image ,class:"item-box-img" %>
+      <%= image_tag @product.images[0] ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <%if @product.order%>
       <div class='sold-out'>
@@ -16,6 +16,11 @@
       <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
+    <ul id="image-button">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
     <div class="item-price-box">
       <span class="item-price">
         <%="¥ #{@product.price}"%>

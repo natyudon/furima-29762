@@ -47,7 +47,7 @@
 }
 
 #image-data {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 #image-data img{
   width: 220px;
@@ -88,8 +88,11 @@
   padding: 2vh 0;
 }
 
+.img-upload p{
+  color: #555555;
+}
 .click-upload {
-  margin: 15px 0;
+  margin: 50px 0 15px 0;
   min-width: 250px;
 }
 
@@ -97,6 +100,48 @@
   margin-bottom: 15px;
 }
 
+#add-image-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+#left-side {
+  height: 220px;
+  width: 220px;
+}
+
+#left-side img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
+
+#add-input {
+  margin-top: 20px;
+}
+
+#add-image-content2 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#left-side2 {
+  height: 220px;
+  width: 220px;
+}
+
+#left-side2 img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
+
+#add-input2 {
+  margin-top: 20px;
+}
 /* /出品画像 */
 
 /* 商品名と商品説明 */
