@@ -21,23 +21,27 @@
 
 /* 購入内容の表示 */
 .buy-item-info {
-  height: 150px;
   border-bottom: 2px solid #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
+.image-each-box {
+  display: flex;
+  padding: 20px 20px;
+}
 .buy-item-img {
-  margin-right: 20px;
   height: 130px;
-  width: 250px;
+  width: 150px;
   object-fit: contain;
 }
 
 .buy-item-right-content {
   display: flex;
   flex-direction: column;
+  padding-bottom: 10px;
 }
 
 .buy-item-text {
