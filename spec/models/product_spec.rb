@@ -4,16 +4,20 @@ RSpec.describe Product, type: :model do
   describe '新規商品出品登録' do
     before do
       @product = FactoryBot.build(:product)
-      @product.image = fixture_file_upload('public/images/test.png')
+      @product.images = [fixture_file_upload('public/images/test.png')]
     end
 
     it '全ての値が存在すれば登録できること' do
       expect(@product).to be_valid
     end
+    it '画像が複数存在しても保存できること' do
+      @product.images = [fixture_file_upload('public/images/test.png'), fixture_file_upload('public/images/test2.png'), fixture_file_upload('public/images/test3.png')]
+      expect(@product).to be_valid
+    end
     it '画像が存在しない時登録できないこと' do
-      @product.image = nil
+      @product.images = nil
       @product.valid?
-      expect(@product.errors.full_messages).to include("Image can't be blank")
+      expect(@product.errors.full_messages).to include("Images can't be blank")
     end
     it '商品名が存在しない時、登録できないこと' do
       @product.name = nil
