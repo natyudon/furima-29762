@@ -33,10 +33,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    if @address = Address.all
-    @address.destroy
-    @order = Order.all
-    @order.destory
+    if @product.order.address.destory
+    @product.order.destory
     end
     if @product.destroy
       redirect_to root_path
