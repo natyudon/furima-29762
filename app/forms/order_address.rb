@@ -12,7 +12,7 @@ class OrderAddress
     validates :phone_number, format: { with: NUMBER_GOSIC }, length: { maximum: 11}
     validates :token
   end
-  validates :prefecture_id, numericality: { other_than: 1, message: 'Select'}
+  validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください'}
   def save
     order = Order.create(user_id: user_id, product_id: product_id)
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, municipalitie: municipalitie, address: address, building: building, phone_number: phone_number, order_id: order.id)
