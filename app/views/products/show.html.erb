@@ -38,10 +38,11 @@
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
     <% if user_signed_in?%>
+    <%= link_to '削除', product_path(@product), method: :delete, class:'item-destroy' %>
      <% if current_user.id == @product.user.id%>
       <%= link_to '商品の編集', edit_product_path(@product), method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
-      <%= link_to '削除', product_path(@product), method: :delete, class:'item-destroy' %>
+      
      <% else %>
       <%unless @product.order%>
       <%= link_to '購入画面に進む', product_orders_path(@product) ,class:"item-red-btn"%>
