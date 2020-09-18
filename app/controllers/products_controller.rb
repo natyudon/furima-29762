@@ -33,9 +33,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    if @product.order.address.destory
-    @product.order.destory
-    end
     if @product.destroy
       redirect_to root_path
     else
