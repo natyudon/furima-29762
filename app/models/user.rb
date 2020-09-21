@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :products
   has_many :orders
-  has_one :card
+  has_one :card, dependent: :destroy
 
   PASSWORD_FULL_WIDTH = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
   PASSWORD_FULL_WIDTH_KANA = /\A[ァ-ヶー－]+\z/.freeze
