@@ -1,9 +1,9 @@
 class CardsController < ApplicationController
   def new
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    if card = Card.find_by(user_id: current_user.id)
-      customer = Payjp::Customer.retrieve(card.customer_token)
-      @card = customer.cards.first
+    if @card = Card.find_by(user_id: current_user.id)
+      customer = Payjp::Customer.retrieve(@card.customer_token)
+      @card_show = customer.cards.first
     end
   end
 
@@ -29,6 +29,15 @@ class CardsController < ApplicationController
         flash[:notice] = 'クレジットカード情報が正しくありません。'
         redirect_to new_card_path # カード登録画面
       end
+    end
+  end
+
+  def destroy
+    @card = Card.find(params[:id])
+    if @card.destroy
+      redirect_to root_path
+    else
+      render :new
     end
   end
 end
