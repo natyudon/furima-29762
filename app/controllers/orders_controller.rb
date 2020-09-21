@@ -7,32 +7,32 @@ class OrdersController < ApplicationController
   end
 
   def create
-    if params[:card_token] == "0"
-    @order_address = OrderAddress.new(order_params)
-    if @order_address.valid?
-      pay_item(@product.price)
-      @order_address.save
-      redirect_to root_path
-    else
-      render :index
+    if params[:card_token] == '0'
+      @order_address = OrderAddress.new(order_params)
+      if @order_address.valid?
+        pay_item(@product.price)
+        @order_address.save
+        redirect_to root_path
+      else
+        render :index
+      end
     end
-   end
 
-   if params[:card_token] == "1" && current_user.card == nil
-    flash[:notice] = "クレジットカードが登録されていません。"
-    redirect_to product_orders_path(@product)
-    return
-   end
-   if params[:card_token] == "1"
-    @order_address = OrderAddress.new(order_token_params)
-   if @order_address.valid?
-    save_token_pay_item(@product.price)
-    @order_address.save
-    redirect_to root_path
-   else
-    render :index
-   end
-   end
+    if params[:card_token] == '1' && current_user.card.nil?
+      flash[:notice] = 'クレジットカードが登録されていません。'
+      redirect_to product_orders_path(@product)
+      return
+    end
+    if params[:card_token] == '1'
+      @order_address = OrderAddress.new(order_token_params)
+      if @order_address.valid?
+        save_token_pay_item(@product.price)
+        @order_address.save
+        redirect_to root_path
+      else
+        render :index
+      end
+    end
   end
 
   private
