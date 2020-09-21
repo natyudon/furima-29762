@@ -42,6 +42,7 @@ Things you may want to cover:
 
 - has_many :products
 - has_many :orders
+- has_one :card
 
 ## products テーブル
 
@@ -83,7 +84,7 @@ Things you may want to cover:
 | ------------    | ------ | ----------- |
 | postal_code     | string | null: false |
 | prefecture_id   | integer| null: false |
-| municipalitie   | stinrg | null: false |
+| municipalitie   | string | null: false |
 | address         | string | null: false |
 | building        | string |             |
 | phone_number    | string | null: false |
@@ -92,3 +93,15 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :order
+
+## cards テーブル
+
+| Column          | Type   | Options     |
+| ------------    | ------ | ----------- |
+| card_token      | string | null: false |
+| customer_token  | string | null: false |
+| user_id         | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user

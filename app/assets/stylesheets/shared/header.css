@@ -85,6 +85,10 @@
   font-weight: bold;
 }
 
+#card-save {
+  margin-right: 3vw;
+  color: #333333;
+}
 
 .logout {
   text-decoration: none;
