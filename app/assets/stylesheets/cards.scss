@@ -7,3 +7,15 @@
   color: red;
   margin-top: 10px;
 }
+
+.save-card-introduction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: calc(100vh - 330px)
+}
+
+.Card_info h2 {
+  font-size: 20px;
+}

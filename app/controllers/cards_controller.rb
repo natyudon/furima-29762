@@ -1,6 +1,10 @@
 class CardsController < ApplicationController
   def new
-    @card = Card.new
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+   if card = Card.find_by(user_id: current_user.id)
+   customer = Payjp::Customer.retrieve(card.customer_token)
+   @card = customer.cards.first
+   end
   end
   def create
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む

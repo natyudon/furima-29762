@@ -1,6 +1,25 @@
 <%= render "shared/second-header"%>
   
+    <% if @card%>
+     <div class="save-card-introduction">
+        <div class="Card_info">
+        <h2>既に登録されているカード情報<h2>
+           【カード番号】
+            <br>
+              <%= "**** **** **** " + @card[:last4] %>
+              <%# カード番号の下4桁を取得 %>
 
+            <br>
+           【有効期限】
+            <br>
+            <%= @card[:exp_month] %>
+            <%# 有効期限の「月」を取得 %>
+            /
+            <%= @card[:exp_year] %>
+            <%# 有効期限の「年」を取得 %>
+        </div>
+        </div>
+    <% else%>
     <%= form_with url: cards_path, id: 'charge-form', class: 'transaction-form-wrap card-height-form',local: true do |f| %>
       <div class='credit-card-form'>
         <h1 class='info-input-haedline'>
@@ -46,5 +65,6 @@
        <%= f.submit "登録" ,class:"buy-red-btn" %>
       </div>
     <% end %>
+    <%end %>
 
 <%= render "shared/second-footer"%>
