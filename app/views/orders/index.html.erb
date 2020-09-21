@@ -73,7 +73,10 @@
         </div>
         <%= f.text_field :cvc,class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
       </div>
-      
+      <div class="user-card-token">
+      <%=f.check_box :card_token, id: "card-token" %>
+      <%= label_tag :card_token, '既に登録したクレジットカードを使用する', class: "card-token-label"%>
+      </div>
     </div>
     <%# /カード情報の入力 %>
     
