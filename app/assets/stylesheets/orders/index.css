@@ -93,6 +93,11 @@
   padding-bottom: 30px;
 }
 
+.card-save-nil {
+  text-align: center;
+  color: red;
+  margin-top: 5px;
+}
 .info-input-haedline {
   text-align: center;
   font-weight: bold;
@@ -129,6 +134,12 @@
   text-align: center;
 }
 
+.user-card-token {
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 30px;
+  font-weight: bold;
+}
 /* /カード情報の入力 */
 
 /* 配送先の入力 */
