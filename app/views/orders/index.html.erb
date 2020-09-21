@@ -36,6 +36,9 @@
     <%# /支払額の表示 %>
     <%= form_with url: product_orders_path(@product), id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%= render 'shared/error_messages', model: @order_address %>
+    <% if flash[:notice] == "クレジットカードが登録されていません。"%>
+    <p class="card-save-nil"><%= flash[:notice] %></p>
+    <% end %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
