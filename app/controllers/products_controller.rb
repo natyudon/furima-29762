@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :params_id, only: [:show, :edit, :update, :destroy]
+  before_action :search_product, only: [:search_index]
 
   def index
     @product = Product.all.order('created_at DESC')
@@ -40,7 +41,18 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search_index
+    @category = Category.where.not(id: 1)
+    @state = State.where.not(id: 1)
+    @order = Order.all
+    @results = @p.result
+  end
+
   private
+
+  def search_product
+    @p = Product.ransack(params[:q])  # 検索オブジェクトを生成
+  end
 
   def params_id
     @product = Product.find(params[:id])
