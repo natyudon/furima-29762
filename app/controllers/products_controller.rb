@@ -48,8 +48,6 @@ class ProductsController < ApplicationController
     @results = @p.result
   end
 
-  
-
   private
 
   def search_product
