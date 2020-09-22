@@ -1,6 +1,13 @@
-<%= render "shared/second-header"%>
-
-  <div>
-
-  </div>
-<%= render "shared/second-footer"%>
+<% if @results.length !=0 %>
+  <% @results.each do |result| %>
+    <td>
+    <br>
+    <li>
+      <%= result.category_id %>
+      <%= result.state_id %>
+      <%= result.price %>
+    </li>
+  <% end %>
+<% else %>
+  該当する商品はありません
+<% end %>

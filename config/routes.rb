@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :orders, only: [:index, :create]
     collection do
+      get 'search_index'
       get 'search'
     end
   end
