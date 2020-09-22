@@ -48,6 +48,11 @@ class ProductsController < ApplicationController
     @results = @p.result
   end
 
+  def search
+    @product = Product.search(params[:keyword])
+    @order = Order.all
+  end
+
   private
 
   def search_product

@@ -16,4 +16,12 @@ class Product < ApplicationRecord
   validates :name, :content, :category, :state, :images, :delivery_fee, :area, :delivery_day, presence: true
   validates :category_id, :state_id, :delivery_fee_id, :area_id, :delivery_day_id, numericality: { other_than: 1, message: 'を選択してください'}
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}
+
+  def self.search(search)
+    if search != ""
+      Product.where('name LIKE(?)', "%#{search}%").or(Product.where('content LIKE(?)', "%#{search}%"))
+    else
+      Product.all
+    end
+  end
 end

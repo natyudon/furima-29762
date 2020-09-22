@@ -1,14 +1,41 @@
-<% if @results.length !=0 %>
-  <% @results.each do |result| %>
-    <td>
-    <br>
-    <li>
-      <%= result.id %>
-      <%= result.category_id %>
-      <%= result.state_id %>
-      <%= result.price %>
-    </li>
+<%= render "shared/header" %>
+
+  <ul id="results-content" class="item-lists">
+     <% if @product && @product != [] %>
+     <% @product.each do |product| %>
+          <li class='list'>
+            <%= link_to product_path(product) do %>
+            <div class='item-img-content'>
+              <% product.images.each_with_index do |image, i|%>
+                <% break if i >= 1%>
+                <%= image_tag image, class: "item-img" %>
+              <% end %>
+              <% @order.each do |order|%>
+              <% if order.product_id == product.id%>
+              <div class='sold-out'>
+              <span>Sold Out!!</span>
+              </div>
+              <% end %>
+              <% end %>
+            </div>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                <%=product.name%>
+              </h3>
+             <div class='item-price'>
+                <span><%= product.price %><br>(税込み)</span>
+                <div class='star-btn'>
+                 <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            </div>
+            <% end %>
+         </li>
+        <% end %>
+  <% else %>
+    <p id="search-else">該当する商品はありません</p>
   <% end %>
-<% else %>
-  該当する商品はありません
-<% end %>
+  </ul>
+
+<%= render "shared/footer" %>
