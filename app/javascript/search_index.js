@@ -9,10 +9,14 @@
     const stateValue = stateId.value;
     const priceGteq = document.getElementById('q_price_gteq');
     const GteqValue = priceGteq.value;
+    const priceLt = document.getElementById('q_price_lt');
+    const ltValue = priceLt.value;
 
-    if ( !(value >= 2) && !(stateValue >= 2 ) && (GteqValue == "")){
+    if ( !(value >= 2) && !(stateValue >= 2 ) && (GteqValue == "") && (ltValue == "")){
       const resultsContent = document.getElementById('results-content');
       resultsContent.style.display="none"
+      const searchIndex = document.getElementById('search-index-form');
+      searchIndex.style.height="calc(100vh - 350px)"
     }
   });
 

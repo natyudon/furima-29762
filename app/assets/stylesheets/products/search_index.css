@@ -1,0 +1,41 @@
+.search-box {
+
+}
+
+#search-index-form {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#search-index-form h2{
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#q_category_id_eq {
+   height: 25px;
+   margin-bottom: 15px;
+}
+
+#q_state_id_eq {
+  height: 25px;
+  margin-bottom: 15px;
+}
+
+#q_price_gteq {
+  margin-bottom: 15px;
+  margin-right: 5px;
+}
+
+#q_price_lt {
+  margin-bottom: 15px;
+  margin-right: 5px;
+}
+
+#result-content {
+  display: flex;
+}
+
+#search-else {
+  height: calc(100vh - 569px);
+}

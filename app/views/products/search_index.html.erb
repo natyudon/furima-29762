@@ -1,6 +1,6 @@
 <%= render "shared/second-header"%>
-
-  <div>
+  
+  <div id="search-index-form">
    <h2>商品検索</h2>
     <%= search_form_for @p, url: search_index_products_path  do |f| %>
     <%= f.label :category_id_eq, 'カテゴリー' %>
@@ -16,25 +16,44 @@
     <%= f.submit '検索' , id: 'search-submit'%>
     <% end%>
     <br>
-    <div>
-    </div>
   </div>
   
-  <div id="results-content">
-  <% if @results.length !=0 %>
-  <% @results.each do |result| %>
-    <td>
-    <br>
-    <li>
-      <%= result.id %>
-      <%= result.category_id %>
-      <%= result.state_id %>
-      <%= result.price %>
-    </li>
+  <ul id="results-content" class="item-lists">
+    <% if @results.length !=0 %>
+     <% @results.each do |result| %>
+          <li class='list'>
+            <%= link_to product_path(result) do %>
+            <div class='item-img-content'>
+              <% result.images.each_with_index do |image, i|%>
+                <% break if i >= 1%>
+                <%= image_tag image, class: "item-img" %>
+              <% end %>
+              <% @order.each do |order|%>
+              <% if order.product_id == result.id%>
+              <div class='sold-out'>
+              <span>Sold Out!!</span>
+              </div>
+              <% end %>
+              <% end %>
+            </div>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                <%=result.name%>
+              </h3>
+             <div class='item-price'>
+                <span><%= result.price %><br>(税込み)</span>
+                <div class='star-btn'>
+                 <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            </div>
+            <% end %>
+         </li>
+        <% end %>
+  <% else %>
+    <p id="search-else">該当する商品はありません</p>
   <% end %>
-<% else %>
-  該当する商品はありません
-<% end %>
-</div>
+  </ul>
 
 <%= render "shared/second-footer"%>

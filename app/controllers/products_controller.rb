@@ -44,9 +44,8 @@ class ProductsController < ApplicationController
   def search_index
     @category = Category.where.not(id: 1)
     @state = State.where.not(id: 1)
-    if @p
-      @results = @p.result
-    end
+    @order = Order.all
+    @results = @p.result
   end
 
   
