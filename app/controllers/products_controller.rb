@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :params_id, only: [:show, :edit, :update, :destroy]
-  before_action :search_product, only: [:search_index, :search]
+  before_action :search_product, only: [:search_index]
 
   def index
     @product = Product.all.order('created_at DESC')
@@ -42,15 +42,14 @@ class ProductsController < ApplicationController
   end
 
   def search_index
-    @products = Product.all.order('created_at DESC')
     @category = Category.where.not(id: 1)
     @state = State.where.not(id: 1)
-    @order = Order.all
+    if @p
+      @results = @p.result
+    end
   end
 
-  def search
-    @results = @p.result
-  end
+  
 
   private
 

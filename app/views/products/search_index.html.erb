@@ -2,7 +2,7 @@
 
   <div>
    <h2>商品検索</h2>
-    <%= search_form_for @p, url: search_products_path do |f| %>
+    <%= search_form_for @p, url: search_index_products_path  do |f| %>
     <%= f.label :category_id_eq, 'カテゴリー' %>
     <%= f.collection_select :category_id_eq, @category, :id, :name,  include_blank: '指定なし' %>
     <br>
@@ -13,43 +13,28 @@
     <%= f.number_field :price_gteq %>以上〜
     <%= f.number_field :price_lt %>未満
     <br>
-    <%= f.submit '検索' %>
+    <%= f.submit '検索' , id: 'search-submit'%>
     <% end%>
     <br>
     <div>
-      <%# 商品一覧 %>
-    <%@products.each do |product| %>
-          <li class='list'>
-            <%= link_to product_path(product) do %>
-            <div class='item-img-content'>
-              <% product.images.each_with_index do |image, i|%>
-                <% break if i >= 1%>
-                <%= image_tag image, class: "item-img" %>
-              <% end %>
-              <% @order.each do |order|%>
-              <% if order.product_id == product.id%>
-              <div class='sold-out'>
-              <span>Sold Out!!</span>
-              </div>
-              <% end %>
-              <% end %>
-            </div>
-            <div class='item-info'>
-              <h3 class='item-name'>
-                <%=product.name%>
-              </h3>
-             <div class='item-price'>
-                <span><%= product.price %><br>(税込み)</span>
-                <div class='star-btn'>
-                 <%= image_tag "star.png", class:"star-icon" %>
-                  <span class='star-count'>0</span>
-                </div>
-              </div>
-            </div>
-            <% end %>
-         </li>
-        <% end %>
     </div>
   </div>
+  
+  <div id="results-content">
+  <% if @results.length !=0 %>
+  <% @results.each do |result| %>
+    <td>
+    <br>
+    <li>
+      <%= result.id %>
+      <%= result.category_id %>
+      <%= result.state_id %>
+      <%= result.price %>
+    </li>
+  <% end %>
+<% else %>
+  該当する商品はありません
+<% end %>
+</div>
 
 <%= render "shared/second-footer"%>
