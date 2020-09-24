@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :products
   has_many :orders
   has_one :card, dependent: :destroy
+  has_many :sns_credentials
 
   PASSWORD_FULL_WIDTH = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
   PASSWORD_FULL_WIDTH_KANA = /\A[ァ-ヶー－]+\z/.freeze
