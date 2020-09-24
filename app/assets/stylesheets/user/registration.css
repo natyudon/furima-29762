@@ -27,6 +27,19 @@
   font-weight: bold;
 }
 
+.link{
+  text-align: center;
+}
+
+.link a{
+  color: #666666;
+}
+
+.link a:hover{
+  color: black;
+  font-weight: 600;
+}
+
 .form-group {
   width: 50%;
   display: flex;

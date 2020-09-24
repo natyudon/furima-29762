@@ -105,3 +105,15 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
+
+## sns_credentials テーブル
+
+| Column          | Type   | Options     |
+| ------------    | ------ | ----------- |
+| provider        | string |             |
+| uid             | string |             |
+| user            | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
