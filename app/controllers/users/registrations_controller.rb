@@ -16,6 +16,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       params[:user][:password] = pass
       params[:user][:password_confirmation] = pass
     end
+    if params[:sns_id]
+      @sns_id = params[:sns_id]
+    end
      super
    end
 

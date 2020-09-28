@@ -35,6 +35,7 @@
   </div>
   <% if @sns_id.present?%>
     <%= hidden_field_tag :sns_auth, true %>
+    <%= hidden_field_tag :sns_id, @sns_id%>
     <% else %>
   <div class="form-group">
     <div class='form-text-wrap'>
