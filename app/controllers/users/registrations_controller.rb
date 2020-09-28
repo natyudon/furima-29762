@@ -13,6 +13,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
    def create
     if params[:sns_auth] == 'true'
       pass = Devise.friendly_token
+      if pass.include?("-")
+        pass.delete!("-")
+      end
+      if pass.include?("_")
+        pass.delete!("_")
+      end
+      #Devise.friendly_tokenの値が英字、数字に偏ってしまったときにvalidationを通すため "A1"を追加してる
+      pass = ("#{pass}A1")
       params[:user][:password] = pass
       params[:user][:password_confirmation] = pass
     end
